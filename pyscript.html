@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Python Code Is Run:</h1>
+    <h1 id="output"></h1>
+    <py-script>
+        from pyscript import display
+        for i in range(1,5):
+            display(i, target='output')
+    </py-script>
+</body>
+</html>
