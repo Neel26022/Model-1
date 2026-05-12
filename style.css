@@ -15,16 +15,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh;    */
+    margin-top: 50px;
     
 }
 
 form {
-    background-color: rgb(16, 65, 80);
+    background-color: #1F6F5F;
     padding: 20px;
     color: wheat;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px #1F6F5F;
+}
+
+input {
+    border-radius: 2px;
+    border: none;
 }
 
 .item {
     margin-bottom: 20px;
+}
+
+#submit {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    background-color: #e2f110;
+    margin-bottom: 10px;
+    transition: 1s all;
+    box-shadow: 2px 2px 5px black;
+}
+
+#submit:hover {
+    background-color: #eeff01d0;
+    transform: translateY(-5px);
 }
