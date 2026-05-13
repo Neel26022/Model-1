@@ -27,7 +27,6 @@ nav {
 .second {
     width: 60%;
     display: flex;
-    gap: 60px;
 }
 
 .second ul {
@@ -44,7 +43,7 @@ select {
 .second button {
     background: #ff7700;
     background: linear-gradient(90deg, rgba(255, 119, 0, 1) 0%, rgba(255, 133, 102, 1) 50%, rgba(242, 159, 34, 1) 100%);
-    padding: 15px 30px;
+    padding: 5px 5px;
     color: white;
     box-shadow: 1px 2px 5px orangered;
     border-radius: 20px;
