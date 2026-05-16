@@ -10,6 +10,7 @@ body {
     height: 100%;
     width: 100%;
     
+    
 }
 
 .hero {
@@ -75,3 +76,69 @@ body {
 .main-second img{
     width: 90%;
 }
+
+.why {
+    display: flex;
+    padding: 50px;
+    gap: 50px;
+}
+
+.why-first {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 20%;
+}
+
+.why-first h1{
+    font-size: 50px;
+    color: rgb(9, 45, 85);
+}
+
+.why-first button {
+    padding: 10px 5px;
+    border-radius: 20px;
+    border: none;
+    background: #ff7700;
+    background: linear-gradient(90deg, rgba(255, 119, 0, 1) 0%, rgba(255, 133, 102, 1) 50%, rgba(242, 159, 34, 1) 100%);
+    color: white;
+    box-shadow: 2px 2px 10px orangered;
+}
+
+.why-second {
+    display: flex;
+    width: 80%;
+    gap: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    border: 1px solid whitesmoke;
+}
+
+.why-second h2 {
+    color: rgb(9, 45, 85);
+}
+
+.why-second .icon {
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+}
+
+.why-second .icon i {
+    color: rgb(9, 45, 85);
+    font-size: 20px;
+}
+
+.why-second p {
+    font-size: 15px;
+    text-align: center;
+    
+}
+
