@@ -35,14 +35,39 @@
             <button>Development</button>
             <button>Design</button>
             <button>Marketing</button>
+        </div>  
+        <div class="courses">
+            <div class="course">
+                <div class="img">
+                    <img src="image/p1.avif" alt="">
+                </div>
+                <div class="title">
+                    <h3>Full-Stack Web Development Bootcamp</h3>
+                </div>
+                <div class="price">
+                    $200
+                </div>
+                <div class="description">
+                    <p>Build responsive websites from scratch using HTML, CSS, JavaScript, and modern frameworks.</p>
+                </div>
+                <button onclick="addCart('Full-Stack Web Development Bootcamp',200)">Buy</button>
+            </div>
         </div>
     </main>
     <div id="footer"></div>
     <script>
-        $(document).ready(function() {
-        $("#nav").load("nav.html");
-        $("#footer").load("footer.html")
-        });
+const jsonString = '{"name": "John", "age": 30}';
+const userObj = JSON.parse(jsonString);
+        console.log(jsonString  )
+        function addCart(title, price) {
+            let existingProduct = JSON.parse(localStorage.getItem('product')) || [];
+            let item = {
+                title: title,
+                price: price
+            }
+            existingProduct.push(item)
+            localStorage.setItem('product',JSON.stringify(existingProduct));
+        }
     </script>
 </body>
 </html>
