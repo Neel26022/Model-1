@@ -11,7 +11,6 @@ body {
     color: #333;
 }
 
-/* Hero Banner */
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200');
     background-size: cover;
@@ -348,4 +347,8 @@ body {
 .empty-cart p {
     color: #777;
     margin-bottom: 20px;
+}
+
+#devlopment, #design, #marketing {
+    display: block;
 }
