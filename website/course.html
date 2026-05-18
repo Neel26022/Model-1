@@ -3,71 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <title>Our Courses</title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="course.css">
-    <title>Document</title>
 </head>
 <body>
     <div id="nav"></div>
+
     <main>
-        <div class="image">
+        <!-- Hero Section -->
+        <div class="hero-image">
             <div class="overlay">
-
                 <h1>Our Courses</h1>
-                <p>Home/Course</p>
+                <p>Home / Course</p>
             </div>
+        </div>
 
-        </div>
-        <div class="search">
+        <!-- Search Bar -->
+        <div class="search-container">
             <div class="search-box">
-                <div class="input">
-                    <input type="text" placeholder="Search Course">
-                </div>
-                <div class="icon">
-                    <i class="fa-brands fa-sistrix"></i>
-                </div>
+                <input type="text" placeholder="Search Course...">
+                <button class="search-icon-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
         </div>
-        <div class="box">
-            <button>All Course</button>
-            <button>Development</button>
-            <button>Design</button>
-            <button>Marketing</button>
+
+        <!-- Filter Categories -->
+        <div class="filter-box">
+            <button class="btn-filter active">All Courses</button>
+            <button class="btn-filter">Development</button>
+            <button class="btn-filter">Design</button>
+            <button class="btn-filter">Marketing</button>
+            <a href="cart.html" class="btn-view-cart"><i class="fa-solid fa-cart-shopping"></i> View Cart</a>
         </div>  
-        <div class="courses">
-            <div class="course">
-                <div class="img">
-                    <img src="image/p1.avif" alt="">
+
+        <!-- Courses Grid -->
+        <div class="courses-container">
+            <!-- Course Card 1 -->
+            <div class="course-card">
+                <div class="course-img">
+                    <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=500" alt="Web Dev">
                 </div>
-                <div class="title">
+                <div class="course-content">
+                    <span class="badge">Development</span>
                     <h3>Full-Stack Web Development Bootcamp</h3>
+                    <p class="description">Build responsive websites from scratch using HTML, CSS, JavaScript, and modern frameworks.</p>
+                    <div class="card-footer">
+                        <span class="price">$200</span>
+                        <button class="btn-buy" onclick="addCart('Full-Stack Web Development Bootcamp', 200, 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=500')">
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
-                <div class="price">
-                    $200
-                </div>
-                <div class="description">
-                    <p>Build responsive websites from scratch using HTML, CSS, JavaScript, and modern frameworks.</p>
-                </div>
-                <button onclick="addCart('Full-Stack Web Development Bootcamp',200)">Buy</button>
             </div>
         </div>
     </main>
+
     <div id="footer"></div>
+
     <script>
-const jsonString = '{"name": "John", "age": 30}';
-const userObj = JSON.parse(jsonString);
-        console.log(jsonString  )
-        function addCart(title, price) {
+        function addCart(title, price, img) {
             let existingProduct = JSON.parse(localStorage.getItem('product')) || [];
+
+            let exists = existingProduct.filter(item => item.title === title);
+            console.log(exists.length)
+            if(!exists.length == 0) {
+                alert("This course is already in your cart")
+                return
+            }
             let item = {
                 title: title,
-                price: price
+                price: price,
+                img: img
             }
-            existingProduct.push(item)
-            localStorage.setItem('product',JSON.stringify(existingProduct));
+            existingProduct.push(item);
+            localStorage.setItem('product', JSON.stringify(existingProduct));
+             alert(`${title} added to cart!`);
         }
+
+        $(document).ready(function() {
+            $("#nav").load("nav.html");
+            $("#footer").load("footer.html");
+        });
     </script>
 </body>
 </html>
