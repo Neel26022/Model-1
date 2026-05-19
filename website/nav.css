@@ -14,6 +14,7 @@ nav {
     display: flex;
     align-items: center;
     padding: 40px;
+    gap: 200px;
 }
 .first {
     width: 40%;

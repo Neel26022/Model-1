@@ -37,16 +37,14 @@
 
         <!-- Filter Categories -->
         <div class="filter-box">
-            <button class="btn-filter active" onclick="course('all')">All Courses</button>
-            <button class="btn-filter" onclick="course('development')">Development</button>
-            <button class="btn-filter" onclick="course('design')">Design</button>
-            <button class="btn-filter" onclick="course('marketing')">Marketing</button>
+            <button class="btn-filter active" onclick="course('all',this)">All Courses</button>
+            <button class="btn-filter" onclick="course('development',this)">Development</button>
+            <button class="btn-filter" onclick="course('design',this)">Design</button>
+            <button class="btn-filter" onclick="course('marketing',this)">Marketing</button>
             <a href="cart.html" class="btn-view-cart"><i class="fa-solid fa-cart-shopping"></i> View Cart</a>
         </div>
 
-        <!-- Courses Grid -->
         <div class="courses-container">
-            <!-- Course Card 1 -->
             <div class="course-card" id="development">
                 <div class="course-img">
                     <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=500" alt="Web Dev">
@@ -93,7 +91,7 @@
                 <div class="course-content">
                     <span class="badge">Marketing</span>
                     <h3>Full Marketing Course</h3>
-                    <p class="description">A "full" marketing education covers everything from traditional brand
+                    <p class="description">A "full" marketing education covers everything from traditional brand 
                         strategy to hands-on digital tactics. </p>
                     <div class="card-footer">
                         <span class="price">$1000</span>
@@ -129,7 +127,15 @@
             alert(`${title} added to cart!`);
         }
 
-        function course(name) {
+        function course(name,ClickedButton) {
+
+
+            let btns = document.querySelectorAll('.btn-filter')
+            console.log(btns)
+            btns.forEach(item => item.classList.remove('active'))
+
+            ClickedButton.classList.add('active')
+
             document.getElementById('development').style.display = "block";
             document.getElementById('design').style.display = "block";
             document.getElementById('marketing').style.display = "block";
