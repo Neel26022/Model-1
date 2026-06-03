@@ -7,6 +7,7 @@ import Counter from './components/Counter'
 import Home from './components/Home';
 import Register from './components/Register';
 import RecipeList from './components/Recipes';
+import Website from './components/Website';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/counter' element={<Counter />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/recipes' element={<RecipeList />}></Route>
+        <Route path='/website' element={<Website />}></Route>
       </Routes>
     </BrowserRouter>
   );

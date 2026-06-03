@@ -1,113 +1,96 @@
-import { useState } from "react";
-import Footer from "./Footer";
+import React, { useState } from "react";
+import "./Register.css";
+import axios from "axios";
 import Header from "./Header";
-import './Register.css';
+import Footer from "./Footer";
 
-const Register = () => {
+function Register() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+  const sendData = async (e) => {
+    e.preventDefault();
 
-    return (
-        <>
-            <Header />
-            <div className="container">
-                <form action="">
-                    <h1 className="item">Register</h1>
-                    
-                    <div className="item">
-                        <label htmlFor="username">Username:</label>
-                        <input type="text" 
-                        placeholder="Enter Username"
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username} /><br />
+    try {
+      const res = await axios.post(
+        "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
 
-                        <p className={username? "" : "error"}>{username ? "":"User name reuqired"}</p>
-                    </div>
+      console.log("Response:", res.data);
 
-                    <div className="item">
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" placeholder="Enter Password" /><br />
-                        <p className={password? "" : "error"}>{password ? "" : "Password is required"}</p>
-                    </div>
+      // Clear form after successful submission
+      setUsername("");
+      setEmail("");
+      setPassword("");
 
-                    <div className="item">
-                        <label htmlFor="gender">Gender:</label> 
-                        Male <input type="radio" value="male" name="gender" /> 
-                        Female <input type="radio" value="female" name="gender" /> 
-                        Other <input type="radio" value="other" name="gender" /><br />
-                    </div>
+      alert("Signup successful!");
+    } catch (err) {
+      console.error("Error:", err);
 
-                    <div className="item">
-                        <label htmlFor="birth-date">Birth-Date:</label>
-                        <input type="date" /> <br />
-                    </div>
+      alert(
+        err.response?.data?.message ||
+          "Something went wrong. Please try again."
+      );
+    }
+  };
 
-                    <div className="item">
-                        <label htmlFor="phone">Phone Number:</label>
-                        <input type="tel" placeholder="Enter Phone Number" /><br />
-                    </div>
+  return (
+    <>
+        <Header />
+        <div className="center-container">
+        <form className="form-card" onSubmit={sendData}>
+            <h2>Create Account</h2>
 
-                    <div className="item">
-                        <label htmlFor="choice">Choice:</label>
-                        <input type="checkbox" value="bmw" /> BMW
-                        <input type="checkbox" value="ferrari" /> Ferrari
-                        <input type="checkbox" value="tata" /> Tata
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="address">Address:</label>
-                        <textarea name="Address" id="address" placeholder="Enter Your address"></textarea>
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="color">Color:</label>
-                        <input type="color" />
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="email">Email:</label>
-                        <input type="email" placeholder="Enter Your Email" />
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="range">Range:</label>
-                        <input type="range" min="0" max="100" defaultValue="50" />
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="file">Upload File:</label>
-                        <input type="file" />
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="search">Search:</label>
-                        <input type="search" placeholder="Search anything 😀" />
-                    </div>
-
-                    <div className="item">
-                        <label htmlFor="dropdown">Select Stream:</label>
-                        <select name="stream" id="dropdown">
-                            <option value="IT">IT</option>
-                            <option value="AIML">AIML</option>
-                            <option value="CE">CE</option>
-                        </select>
-                    </div>
-
-                    <div className="item">
-                        {/* Fixed the inline style attribute to use a JavaScript object */}
-                        <div style={{ width: '100px', height: '50px', display: 'flex', alignItems: 'center' }}>
-                            <label htmlFor="image">Image:</label>
-                            <input type="image" alt="Hello" style={{ height: '100%', width: '100%' }} src="https://static.vecteezy.com/system/resources/previews/025/894/618/non_2x/cute-word-hello-cartoon-style-illustration-vector.jpg" />
-                        </div>
-                    </div>
-
-                    <input type="submit" id="submit" />
-                    <input type="reset" id="reset" /> {/* Changed duplicate ID 'submit' to 'reset' */}
-                </form>
+            <div className="input-group">
+            <label htmlFor="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+            />
             </div>
-        </>
-    );
-};
+
+            <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            </div>
+
+            <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+            </div>
+
+            <button type="submit" className="submit-btn">
+            Submit
+            </button>
+        </form>
+        </div>
+        <Footer />
+    </>
+  );
+}
 
 export default Register;

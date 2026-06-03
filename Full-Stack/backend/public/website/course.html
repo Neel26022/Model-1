@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Courses</title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="course.css">
+</head>
+
+<body>
+    <div id="nav"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="hero-image">
+            <div class="overlay">
+                <h1>Our Courses</h1>
+                <p>Home / Course</p>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search Course...">
+                <button class="search-icon-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Categories -->
+        <div class="filter-box">
+            <button class="btn-filter active" onclick="course('all',this)">All Courses</button>
+            <button class="btn-filter" onclick="course('development',this)">Development</button>
+            <button class="btn-filter" onclick="course('design',this)">Design</button>
+            <button class="btn-filter" onclick="course('marketing',this)">Marketing</button>
+            <a href="cart.html" class="btn-view-cart"><i class="fa-solid fa-cart-shopping"></i> View Cart</a>
+        </div>
+
+        <div class="courses-container">
+            <div class="course-card" id="development">
+                <div class="course-img">
+                    <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=500" alt="Web Dev">
+                </div>
+                <div class="course-content">
+                    <span class="badge">Development</span>
+                    <h3>Full-Stack Web Development Bootcamp</h3>
+                    <p class="description">Build responsive websites from scratch using HTML, CSS, JavaScript, and
+                        modern frameworks.</p>
+                    <div class="card-footer">
+                        <span class="price">$200</span>
+                        <button class="btn-buy"
+                            onclick="addCart('Full-Stack Web Development Bootcamp', 200, 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=500')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card" id="design">
+                <div class="course-img">
+                    <img src="https://images.unsplash.com/photo-1648854006531-361649aa182c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Web Dev">
+                </div>
+                <div class="course-content">
+                    <span class="badge">Design</span>
+                    <h3>UI/UX Full Course</h3>
+                    <p class="description">A full UI/UX design course takes you from beginner to job-ready by teaching
+                        you user-centered research, wireframing, visual design, and industry-standard tools like Figma.
+                    </p>
+                    <div class="card-footer">
+                        <span class="price">$500</span>
+                        <button class="btn-buy"
+                            onclick="addCart('UI/UX Full Course', 500, 'https://images.unsplash.com/photo-1648854006531-361649aa182c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card" id="marketing">
+                <div class="course-img">
+                    <img src="https://plus.unsplash.com/premium_vector-1683141147347-c6aa70127df2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Web Dev">
+                </div>
+                <div class="course-content">
+                    <span class="badge">Marketing</span>
+                    <h3>Full Marketing Course</h3>
+                    <p class="description">A "full" marketing education covers everything from traditional brand 
+                        strategy to hands-on digital tactics. </p>
+                    <div class="card-footer">
+                        <span class="price">$1000</span>
+                        <button class="btn-buy"
+                            onclick="addCart('Full Marketing Course', 1000, 'https://plus.unsplash.com/premium_vector-1683141147347-c6aa70127df2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script>
+        function addCart(title, price, img) {
+            let existingProduct = JSON.parse(localStorage.getItem('product')) || [];
+
+            let exists = existingProduct.filter(item => item.title === title);
+            console.log(exists.length)
+            if (!exists.length == 0) {
+                alert("This course is already in your cart")
+                return
+            }
+            let item = {
+                title: title,
+                price: price,
+                img: img
+            }
+            existingProduct.push(item);
+            localStorage.setItem('product', JSON.stringify(existingProduct));
+            alert(`${title} added to cart!`);
+        }
+
+        function course(name,ClickedButton) {
+
+
+            let btns = document.querySelectorAll('.btn-filter')
+            console.log(btns)
+            btns.forEach(item => item.classList.remove('active'))
+
+            ClickedButton.classList.add('active')
+
+            document.getElementById('development').style.display = "block";
+            document.getElementById('design').style.display = "block";
+            document.getElementById('marketing').style.display = "block";
+            if (name == 'development') {
+                // document.getElementById('development').style.display = "none";
+                document.getElementById('design').style.display = "none";
+                document.getElementById('marketing').style.display = "none";
+                
+                console.log('hello');
+            } else if (name == 'design') {
+                document.getElementById('development').style.display = "none";
+                // document.getElementById('design').style.display = "none";
+                document.getElementById('marketing').style.display = "none";
+                
+            } else if (name == 'all') {
+                document.getElementById('development').style.display = "block";
+                document.getElementById('design').style.display = "block";
+                document.getElementById('marketing').style.display = "block";
+            } else {
+                document.getElementById('development').style.display = "none";
+                document.getElementById('design').style.display = "none";
+                // document.getElementById('marketing').style.display = "none";
+                
+            }
+        }
+
+        $(document).ready(function () {
+            $("#nav").load("nav.html");
+            $("#footer").load("footer.html");
+        });
+    </script>
+</body>
+
+</html>

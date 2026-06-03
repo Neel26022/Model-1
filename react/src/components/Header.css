@@ -33,9 +33,14 @@ li {
     text-decoration: none;
 }
 
+.third{
+    display: flex;
+    gap:3px;
+}
 
 .third button {
-    padding: 6px;
+    padding: 10px;
+    cursor: pointer;
     border-radius: 10px;
     border: none;
 }

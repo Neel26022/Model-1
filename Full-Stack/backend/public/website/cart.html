@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="course.css">
+</head>
+<body>
+    <div id="nav"></div>
+
+    <main class="cart-wrapper">
+        <div class="cart-header">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Shopping Cart</h2>
+            <a href="course.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
+        </div>
+
+        <div class="cart-content-layout">
+            <div class="cart-items-section" id="cart-items-container">
+            </div>
+
+            <div class="cart-summary-section">
+                <h3>Order Summary</h3>
+                <hr>
+                <div class="summary-row">
+                    <span>Items Total:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Discount:</span>
+                    <span class="free-text">-$0.00</span>
+                </div>
+                <hr>
+                <div class="summary-row total">
+                    <span>Grand Total:</span>
+                    <span id="grand-total">$0.00</span>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#nav").load("nav.html");
+            $("#footer").load("footer.html");
+            renderCart();
+        });
+
+        function renderCart() {
+            let products = JSON.parse(localStorage.getItem('product')) || [];
+            let container = $('#cart-items-container');
+            container.empty();
+
+            if(products.length === 0) {
+                container.html(`
+                    <div class="empty-cart">
+                        <i class="fa-regular fa-folder-open"></i>
+                        <p>Your cart is empty.</p>
+                        <a href="courses.html" class="btn-buy" style="text-decoration:none; display:inline-block;">Browse Courses</a>
+                    </div>
+                `);
+                $('#subtotal').text('$0.00');
+                $('#grand-total').text('$0.00');
+                return;
+            }
+
+            let total = 0;
+            products.forEach((item, index) => {
+                total += parseFloat(item.price);
+                let defaultImg = item.img || 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=500';
+                
+                container.append(`
+                    <div class="cart-item">
+                        <img src="${defaultImg}" alt="${item.title}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4>${item.title}</h4>
+                            <p class="cart-item-price">$${item.price}</p>
+                        </div>
+                        <button class="btn-remove" onclick="removeItem(${index})">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `);
+            });
+
+            $('#subtotal').text(`$${total.toFixed(2)}`);
+            $('#grand-total').text(`$${total.toFixed(2)}`);
+        }
+
+        function removeItem(index) {
+            let products = JSON.parse(localStorage.getItem('product')) || [];
+            products.splice(index, 1);
+            localStorage.setItem('product', JSON.stringify(products));
+            renderCart();
+        }
+
+        function checkout() {
+            alert("Thank you for your purchase!");
+            localStorage.removeItem('product');
+            renderCart();
+        }
+    </script>
+</body>
+</html>

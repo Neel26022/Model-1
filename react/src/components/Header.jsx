@@ -6,18 +6,19 @@ const Header = () => {
         <>
 
             <nav>
-                <div class="first">
+                <div className="first">
                     <h3>Hello</h3>
                 </div>
-                <div class="second">
+                <div className="second">
                     <ul>
                         <Link to='/'><li>Home</li></Link>
                         <Link to='/display'><li>Display</li></Link>
                         <Link to='/counter'><li>Counter</li></Link>
                         <Link to='/recipes'><li>Recipes</li></Link>
+                        <Link to='/website'><li>Website</li></Link>
                     </ul>
                 </div>
-                <div class="third">
+                <div className="third">
                     <Link to='/register'><button>Register</button></Link>
                     <button>Signin</button>
                 </div>
