@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Register from './components/Register';
 import RecipeList from './components/Recipes';
 import Website from './components/Website';
+import FetchUser from './components/FetchUser';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/recipes' element={<RecipeList />}></Route>
         <Route path='/website' element={<Website />}></Route>
+        <Route path='/fetch-users' element={<FetchUser />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -14,13 +14,14 @@ const Header = () => {
                         <Link to='/'><li>Home</li></Link>
                         <Link to='/display'><li>Display</li></Link>
                         <Link to='/counter'><li>Counter</li></Link>
-                        <Link to='/recipes'><li>Recipes</li></Link>
-                        <Link to='/website'><li>Website</li></Link>
+                        <Link to='/recipes'><li>Api Call</li></Link>
+                        <Link to='/website'><li>Static Website</li></Link>
+                        <Link to='/fetch-users'><li>Fetch Users</li></Link>
                     </ul>
                 </div>
                 <div className="third">
                     <Link to='/register'><button>Register</button></Link>
-                    <button>Signin</button>
+                    
                 </div>
             </nav>
             <main>

@@ -10,10 +10,13 @@
 
 .container button {
     margin-top: 10px;
-    margin-bottom: 50px;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
     background-color: orange;
     box-shadow: 5px 5px black;
+}
+
+.last {
+    margin-bottom: 20px;
 }
