@@ -7,7 +7,7 @@ const Header = () => {
 
             <nav>
                 <div className="first">
-                    <h3>Hello</h3>
+                    <h3>Neel Prajapati</h3>
                 </div>
                 <div className="second">
                     <ul>
