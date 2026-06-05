@@ -7,26 +7,27 @@ import { fileURLToPath } from "url";
 import User from "./models/user.js";
 
 const app = express();
+app.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(
-  cors({
-    origin:
-      "https://didactic-goggles-v4r49xx9pr7369wr-3000.app.github.dev",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
-app.use(
-  cors({
-    origin:
-      "https://model-1-peach.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin:
+//       "https://didactic-goggles-v4r49xx9pr7369wr-3000.app.github.dev",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
+// app.use(
+//   cors({
+//     origin:
+//       "https://model-1-peach.vercel.app",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
 
 app.use(express.json());
 
