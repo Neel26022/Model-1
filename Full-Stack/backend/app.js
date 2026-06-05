@@ -19,6 +19,14 @@ app.use(
     credentials: true,
   })
 );
+app.use(
+  cors({
+    origin:
+      "https://model-1-peach.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
