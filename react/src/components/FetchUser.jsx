@@ -11,7 +11,7 @@ const FetchUser = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/users"
+          "https://model-1-w7r6.onrender.com/users"
         );
 
         setUsers(response.data.data);

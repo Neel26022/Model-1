@@ -5,37 +5,37 @@ import "./Website.css";
 const Website = () => {
   const goToWebsite = () => {
     window.open(
-      "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/website/index.html",
+      "https://model-1-w7r6.onrender.com/website/index.html",
       "_blank"
     );
   };
   const goToAudio = () => {
     window.open(
-      "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/audio",
+      "https://model-1-w7r6.onrender.com/audio",
       "_blank"
     );
   };
   const goToLayout = () => {
     window.open(
-      "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/layout",
+      "https://model-1-w7r6.onrender.com/layout",
       "_blank"
     );
   };
   const goToPyscript= () => {
     window.open(
-      "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/pyscript",
+      "https://model-1-w7r6.onrender.com/pyscript",
       "_blank"
     );
   };
   const goToTable = () => {
     window.open(
-      "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/table",
+      "https://model-1-w7r6.onrender.com/table",
       "_blank"
     );
   };
   const goToRegister = () => {
     window.open(
-      "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/register",
+      "https://model-1-w7r6.onrender.com/register",
       "_blank"
     );
   };

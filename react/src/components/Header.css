@@ -18,6 +18,10 @@ nav {
     align-items: center;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
 
 .second ul{
     display: flex;

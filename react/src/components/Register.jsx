@@ -14,7 +14,7 @@ function Register() {
 
     try {
       const res = await axios.post(
-        "https://didactic-goggles-v4r49xx9pr7369wr-8080.app.github.dev/signup",
+        "https://model-1-w7r6.onrender.com/signup",
         {
           username,
           email,
